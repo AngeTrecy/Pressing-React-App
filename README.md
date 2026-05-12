@@ -1,0 +1,40 @@
+#  PressingPro - Gestion de Pressing Local
+
+**PressingPro** est une application web moderne, rapide et sécurisée conçue pour les gestionnaires de pressings locaux. Elle permet de suivre les dépôts, les paiements et le chiffre d'affaires, le tout avec une approche **Offline-First**.
+
+---
+
+##  Fonctionnalités
+
+-   ** Gestion CRUD complète** : Enregistrez, modifiez et supprimez les dépôts (habits, types de tissus, prix).
+-   ** Recherche & Filtres intelligents** :
+    -   Recherche instantanée par nom de client ou numéro de téléphone.
+    -   Filtres par statut : *À laver, Prêt, Livré*.
+    -   Filtres de paiement : *Payé, Impayé, Avance*.
+-   ** Suivi Financier** : Calcul automatique du chiffre d'affaires journalier et des restes à percevoir.
+-   ** Alertes de Retard** : Indicateurs visuels pour les vêtements non récupérés après la date prévue(si possible).
+-   ** Mode Sombre** : Interface adaptative pour un confort visuel optimal de jour comme de nuit.
+-   ** Stockage Local (Offline)** : Les données restent dans votre navigateur grâce à **IndexedDB** via **Dexie.js**. Pas besoin de connexion internet permanente.
+
+---
+
+##  Stack Technique
+
+-   **Framework** : [React.js](https://reactjs.org/) (JSX)
+-   **Build Tool** : [Vite](https://vitejs.dev/)
+-   **Styling** : [Tailwind CSS](https://tailwindcss.com/)
+-   **Base de données** : [Dexie.js](https://dexie.org/) (Wrapper IndexedDB)
+-   **Icônes** : [Lucide React](https://lucide.dev/)
+
+---
+
+##  Structure du Projet
+
+```text
+src/
+├── components/     # Composants UI (Boutons, Cartes, Formulaires)
+├── db/             # Configuration de la base de données Dexie
+├── hooks/          # Hooks personnalisés (ex: useOrders)
+├── utils/          # Fonctions de calcul et formatage de dates
+├── App.jsx         # Composant principal et logique de routage
+└── main.jsx        # Point d'entrée de l'application
