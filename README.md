@@ -1,40 +1,54 @@
-#  PressingPro - Gestion de Pressing Local
+# IT-Pressing - Système de Gestion de Pressing Moderne
 
-**PressingPro** est une application web moderne, rapide et sécurisée conçue pour les gestionnaires de pressings locaux. Elle permet de suivre les dépôts, les paiements et le chiffre d'affaires, le tout avec une approche **Offline-First**.
+IT-Pressing est une application web moderne et élégante conçue pour simplifier la gestion quotidienne d'un établissement de pressing. Développée avec React et Tailwind CSS v4, elle offre une expérience utilisateur fluide avec un design "Premium" et une gestion locale des données performante.
 
----
+##  Fonctionnalités Clés
 
-##  Fonctionnalités
+- **Tableau de Bord Intuitif** : Vue d'ensemble du chiffre d'affaires, des impayés et du volume de commandes.
+- **Gestion des Commandes** : Ajout, modification, suppression et suivi du statut de paiement.
+- **Base de Données Clients** : Identification automatique des clients réguliers et suivi de leur historique.
+- **Suivi des Paiements** : Section dédiée pour monitorer les factures réglées et en attente.
+- **Design Premium** : Interface épurée avec thème blanc/marron, icônes Lucide et animations fluides.
+- **Stockage Local** : Utilisation de Dexie.js (IndexedDB) pour une application rapide qui conserve les données sur votre navigateur.
 
--   ** Gestion CRUD complète** : Enregistrez, modifiez et supprimez les dépôts (habits, types de tissus, prix).
--   ** Recherche & Filtres intelligents** :
-    -   Recherche instantanée par nom de client ou numéro de téléphone.
-    -   Filtres par statut : *À laver, Prêt, Livré*.
-    -   Filtres de paiement : *Payé, Impayé, Avance*.
--   ** Suivi Financier** : Calcul automatique du chiffre d'affaires journalier et des restes à percevoir.
--   ** Alertes de Retard** : Indicateurs visuels pour les vêtements non récupérés après la date prévue(si possible).
--   ** Mode Sombre** : Interface adaptative pour un confort visuel optimal de jour comme de nuit.
--   ** Stockage Local (Offline)** : Les données restent dans votre navigateur grâce à **IndexedDB** via **Dexie.js**. Pas besoin de connexion internet permanente.
+##  Prérequis
 
----
+Avant de commencer, assurez-vous d'avoir installé sur votre machine :
+- [Node.js](https://nodejs.org/) (Version 18 ou supérieure recommandée)
+- [npm](https://www.npmjs.com/) (généralement installé avec Node.js)
+
+##  Installation
+
+1. **Cloner ou télécharger le projet** dans le dossier de votre choix.
+2. **Ouvrir un terminal** dans le dossier du projet.
+3. **Installer les dépendances** :
+   ```bash
+   npm install
+   ```
+   *Note : Si vous installez les bibliothèques individuellement :*
+   ```bash
+   npm install lucide-react dexie dexie-react-hooks
+   ```
+
+##  Utilisation
+
+Pour lancer l'application en mode développement :
+```bash
+npm run dev
+```
+L'application sera accessible par défaut sur `http://localhost:5173`.
+
+### Identifiants par défaut (Admin) :
+- **E-mail** : `admin@pressing.com`
+- **Mot de passe** : `admin`
+
 
 ##  Stack Technique
 
--   **Framework** : [React.js](https://reactjs.org/) (JSX)
--   **Build Tool** : [Vite](https://vitejs.dev/)
--   **Styling** : [Tailwind CSS](https://tailwindcss.com/)
--   **Base de données** : [Dexie.js](https://dexie.org/) (Wrapper IndexedDB)
--   **Icônes** : [Lucide React](https://lucide.dev/)
+- **Frontend** : React 19 + Vite
+- **Styling** : Tailwind CSS v4
+- **Icônes** : Lucide React
+- **Base de données** : Dexie.js (IndexedDB pour navigateur)
 
 ---
-
-##  Structure du Projet
-
-```text
-src/
-├── components/     # Composants UI (Boutons, Cartes, Formulaires)
-├── db/             # Configuration de la base de données Dexie
-├── hooks/          # Hooks personnalisés (ex: useOrders)
-├── utils/          # Fonctions de calcul et formatage de dates
-├── App.jsx         # Composant principal et logique de routage
-└── main.jsx        # Point d'entrée de l'application
+Développé pour une gestion de pressing efficace et moderne.

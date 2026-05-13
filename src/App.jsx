@@ -1,5 +1,19 @@
-import Dash from "./components/Dash";
+import React, { useState } from 'react';
+import Login from './components/login'; 
+import Dashboard from './components/Dashboard';
 
-export default function App() {
-  return <Dash />;
+function App() {
+  const [user, setUser] = useState(null);
+
+  return (
+    <div className="App">
+      {user ? (
+        <Dashboard user={user} onLogout={() => setUser(null)} />
+      ) : (
+        <Login onLoginSuccess={(userData) => setUser(userData)} />
+      )}
+    </div>
+  );
 }
+
+export default App;
