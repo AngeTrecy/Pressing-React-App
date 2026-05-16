@@ -1,9 +1,25 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-body {
-    margin: 0;
-    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-    background: linear-gradient(135deg, #23272f 0%, #f3f4f6 100%);
-    min-height: 100vh;
-    color: #18181b;
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply antialiased text-[#5D4037] dark:text-[#EFEBE9] bg-[#FAF7F5] dark:bg-[#1A1614];
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Forcer le mode sombre via la classe .dark pour Tailwind v4 */
+@variant dark (&:where(.dark, .dark *));
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[#8B5E3C]/20 dark:bg-[#8B5E3C]/10 rounded-full hover:bg-[#8B5E3C]/40 transition-colors;
 }

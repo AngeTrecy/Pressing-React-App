@@ -1,25 +1,27 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useState } from 'react';
-import { db } from '../db/database'; // Chemin corrigé
+import { db, type Order } from '../db/database';
 
 export function useOrders() {
     const [search, setSearch] = useState('');
     const [filterStatus, setFilterStatus] = useState('all');
 
-    const allOrders = useLiveQuery(() => db.orders.toArray()) || [];
+    const allOrders: Order[] = useLiveQuery(() => db.orders.toArray()) || [];
 
     let filteredOrders = allOrders.filter(order => {
         const searchLower = search.toLowerCase();
-        return (
+        const matchesSearch = (
             order.customerName.toLowerCase().includes(searchLower) ||
             order.phone.includes(searchLower)
         );
+        const matchesFilter = filterStatus === 'all' || order.status === filterStatus;
+        return matchesSearch && matchesFilter;
     });
 
-    const totalRevenue = allOrders.filter(o => o.isPaid).reduce((sum, o) => sum + (o.price || 0), 0);
+    const totalRevenue = allOrders.filter(o => o.isPaid).reduce((sum, o) => sum + (o.amount || 0), 0);
     const unpaidCount = allOrders.filter(o => !o.isPaid).length;
 
-    const togglePaid = async (id, currentStatus) => {
+    const togglePaid = async (id: number, currentStatus: boolean) => {
         try {
             await db.orders.update(id, { isPaid: !currentStatus });
         } catch (err) {
@@ -27,7 +29,7 @@ export function useOrders() {
         }
     };
 
-    const deleteOrder = async (id) => {
+    const deleteOrder = async (id: number) => {
         try {
             await db.orders.delete(id);
         } catch (err) {
@@ -36,7 +38,7 @@ export function useOrders() {
     };
 
     return {
-        filteredOrders, // Important: on l'appelle filteredOrders pour Dashboard
+        filteredOrders,
         totalRevenue,
         unpaidCount,
         search,
